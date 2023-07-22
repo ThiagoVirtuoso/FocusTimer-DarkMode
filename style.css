@@ -1,0 +1,201 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62.5%;
+    --bg-color: #FFFFFF;
+    --bg-card-enabled: #02799D;
+    --bg-card-disabled: #E1E1E6;
+    --bg-card-hover: #ADD8E6;
+    --enabled-card-color-content: #FFFFFF;
+    --disabled-card-color-content: #323238;
+    --color-timer: #323238;
+    --color-controls: #323238;
+    --color-theme-toggler: #000000;
+    --color-slider: #323238;
+
+}
+
+.dark {
+    --bg-color: #121214;
+    --bg-card-enabled: #0A3442;
+    --bg-card-disabled: #29292E;
+    --bg-card-hover: #2d60726b;
+    --enabled-card-color-content: #FFFFFF;
+    --disabled-card-color-content: #C4C4CC;
+    --color-timer: #FFFFFF;
+    --color-controls: #C4C4CC;
+    --color-theme-toggler: #FFFFFF;
+    --color-slider: #FFFFFF;
+  }
+
+body {
+    display: flex;
+    background-color: var(--bg-color);
+    color: var(--color-timer);
+    font-family: 'Roboto', sans-serif;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: 100vh;
+    transition: background-color 1000ms;
+}
+
+header button {
+    position: absolute;
+    top: 6.0rem;
+    right: 6.0rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 200ms;
+}
+
+header button:hover {
+    transform: rotate(360deg);
+}
+
+.dark header button {
+    top: 6.4rem;
+    right: 6.4rem;
+}
+
+header button svg path {
+    fill: var(--color-theme-toggler);
+}
+
+#timer {
+    max-width: 32.1rem;
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(6.3rem, 6.3rem + 10vw, 12.6rem);
+    margin-right: clamp(9.6rem, 9.6rem + 5vw, 19.2rem);
+}
+
+#time {
+    display: flex;
+}
+
+#controls {
+    display: flex;
+    gap: 4.0rem;
+    margin-top: 1.7rem;
+}
+
+#controls button {
+    max-width: 4.8rem;
+    max-height: 4.8rem;
+}
+
+#controls button, #sounds button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: transform 200ms;
+}
+
+#controls button:hover, .card:hover {
+    transform: scale(1.1);
+}
+
+#controls button svg path {
+    fill: var(--color-controls);
+}
+
+#sounds {
+    max-width: 30.8rem;
+    max-height: 33.6rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.2rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: clamp(6.9rem, 6.9rem + 10vw, 13.8rem);
+    height: clamp(7.6rem, 7.6rem + 10vw, 15.2rem);
+    border-radius: 2.4rem;
+    background-color: var(--bg-card-disabled);
+    cursor: pointer;
+    transition: background 500ms, transform 200ms;
+    user-select: none;
+}
+
+.card.playing {
+    background-color: var(--bg-card-enabled);
+}
+
+.card:hover {
+    background-color: var(--bg-card-hover);
+}
+
+.card svg {
+    width: clamp(2.8rem, 2.8rem + 5vw, 5.6rem);
+    height: clamp(2.8rem, 2.8rem + 5vw, 5.6rem);
+    fill: var(--disabled-card-color-content);
+}
+
+.card.playing svg path {
+    fill: var(--enabled-card-color-content);
+}
+
+.slider {
+    appearance: none;
+    width: 9.0rem;
+    height: .4rem;
+    border: 0;
+    border-radius: .5rem;
+    background: var(--color-slider);
+    color: var(--color-slider);
+    margin-top: 3.2rem;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%; 
+    background: var(--color-slider);
+    cursor: pointer;
+}
+
+.card.playing .slider, .card.playing .slider::-webkit-slider-thumb {
+    background: var(--enabled-card-color-content);
+}
+
+.hide {
+    display: none;
+}
+
+@media (max-width: 845px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #timer {
+        margin-right: 0;
+        margin-bottom: 10.2rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #controls button {
+        max-width: clamp(2.4rem, 2.4rem + 2vw, 4.8rem);
+        max-height: clamp(2.4rem, 2.4rem + 2vw, 4.8rem);
+    }
+
+    #sounds {
+        display: grid;
+    }
+}
